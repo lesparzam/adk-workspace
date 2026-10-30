@@ -44,23 +44,14 @@ pip install google-adk
 ```
 
 ### 3. Obtener clave de API
-Genera tu clave de API de Gemini desde [Google AI Studio](https://aistudio.google.com/).
+Genera tu clave de API de Gemini desde [Google AI Studio](https://aistudio.google.com/api-keys).
 
-### 4. Ejecutar `adk create`
-Genera la plantilla y estructura del agente con el asistente de línea de comandos:
-```bash
-adk create my_first_agent
-```
-*(Sigue las indicaciones en pantalla para configurar el nombre, descripción y modelo del agente).*
-
-### 5. Configurar `.env`
-Crea o edita el archivo `.env` dentro de la carpeta `my_first_agent/` con tus credenciales:
+### 4. Configurar `.env`
+Crea el archivo `.env` dentro de la carpeta `my_first_agent/` con tus credenciales:
 ```env
 GOOGLE_API_KEY=tu_api_key_aqui
 GOOGLE_GENAI_USE_ENTERPRISE=0
 ```
-
-> **Nota:** Nunca subas tu archivo `.env` a repositorios públicos. Ya se encuentra protegido en `.gitignore`.
 
 ---
 
@@ -82,11 +73,6 @@ Ideal para pruebas rápidas y depuración directa desde la terminal.
   ```bash
   adk run my_first_agent "¿Qué puedes hacer?"
   ```
-
-- **Opciones útiles:**
-  - `--save_session`: Guarda el historial de la sesión al salir.
-  - `--in_memory`: Ejecuta sin persistir datos en `.adk/`.
-  - `-v, --verbose`: Muestra logs detallados de depuración.
 
 ---
 
@@ -130,21 +116,4 @@ Inicia un servidor FastAPI sin la interfaz web visual, diseñado para integrar t
   - `--reload`: Habilita recarga automática durante el desarrollo.
 
 ---
-
-## 🛠️ Personalización del Agente
-
-El comportamiento y las instrucciones del agente se configuran en `my_first_agent/agent.py`:
-
-```python
-from google.adk.agents.llm_agent import Agent
-
-root_agent = Agent(
-    model='gemini-3.5-flash',
-    name='root_agent',
-    description='A helpful assistant for user questions.',
-    instruction='Answer user questions to the best of your knowledge',
-)
-```
-
-Puedes añadir `tools` (herramientas / funciones en Python), modificar las `instruction` (instrucciones del sistema) o cambiar el modelo según las necesidades de tu proyecto.
 
